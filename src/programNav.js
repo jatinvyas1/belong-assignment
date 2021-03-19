@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useSelector } from "react-redux";
-import { GREY } from "./constants";
+import { GREY, DARK_BLUE } from "./constants";
 import ProgramView from "./programView";
 import SubmitPage from "./SubmitPage";
 function ProgramNav() {
@@ -32,12 +32,19 @@ function ProgramNav() {
       padding: "1rem 1.5rem ",
       cursor: "pointer",
     },
+    active: {
+      borderBottom: `8px solid ${DARK_BLUE}`,
+      padding: "1rem 1.5rem ",
+      cursor: "pointer",
+    },
   };
   return (
     <div>
       <div style={styles.programNav}>
         <div
-          style={styles.programNavlink}
+          style={
+            currentView === "video" ? styles.active : styles.programNavlink
+          }
           onClick={() => {
             setSubmit(false);
             setCurrentView("video");
@@ -46,7 +53,11 @@ function ProgramNav() {
           Mentor Video
         </div>
         <div
-          style={styles.programNavlink}
+          style={
+            currentView === "information"
+              ? styles.active
+              : styles.programNavlink
+          }
           onClick={() => {
             setSubmit(false);
             setCurrentView("information");
@@ -55,7 +66,7 @@ function ProgramNav() {
           Information
         </div>
         <div
-          style={styles.programNavlink}
+          style={currentView === "task" ? styles.active : styles.programNavlink}
           onClick={() => {
             setSubmit(false);
             setCurrentView("task");
@@ -64,7 +75,9 @@ function ProgramNav() {
           Task
         </div>
         <div
-          style={styles.programNavlink}
+          style={
+            currentView === "resources" ? styles.active : styles.programNavlink
+          }
           onClick={() => {
             setSubmit(false);
             setCurrentView("resources");
@@ -72,7 +85,13 @@ function ProgramNav() {
         >
           Resources
         </div>
-        <div style={styles.programNavlink} onClick={() => setSubmit(!submit)}>
+        <div
+          style={submit ? styles.active : styles.programNavlink}
+          onClick={() => {
+            setSubmit(true);
+            setCurrentView("");
+          }}
+        >
           Submission
         </div>
       </div>

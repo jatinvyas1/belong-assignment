@@ -9,7 +9,7 @@ function ProgramView(props) {
       padding: "3rem 1rem 0 4rem",
       display: "flex",
       flexDirection: "column",
-      width: "85%",
+      width: "550px",
     },
     img: {
       width: "550px",
